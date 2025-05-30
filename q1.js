@@ -1,31 +1,6 @@
-
-//insert documents
-db.employees.insertOne({
-  name: "John Smith",
-  email: "john@gmail.com",
-  department: "IT",
-  salary: 1456,
-  location: ["FL", "OH"],
-  date: Date(),
-});
-
-db.employees.insertMany([
-  {
-    name: "Mike Joseph",
-    email: "mike@gmail.com",
-    department: "IT",
-    salary: 2456,
-    location: ["FL", "TX"],
-    date: Date(),
-  },
-  {
-    name: "Cathy G",
-    email: "cathy@gmail.com",
-    department: "IT",
-    salary: 3456,
-    location: ["AZ", "TX"],
-    date: Date(),
-  },
-]);
-
-db.employees.find();
+//cmd then type mongosh, you will get test prompt
+//type cls to clear the screen
+//use gcet - to create a new database or switch if already exists
+//show collections - to display existing collections(tables)
+//db.createCollection("employees")
+//show collections
