@@ -1,19 +1,30 @@
-//display top 3 highest paid employees-
-
-db.employees.aggregate([{$sort:{salary:-1}},{$limit:3}])
-
-//display annual salary of each employee
-db.employees.aggregate([{$project: {name: 1, annualSalary: {$multiply: ["$salary", 12]}}}])
-//if age>40 then display "band a" else "band b"
 db.employees.aggregate([
   {
     $project: {
       name: 1,
-      age: 1,
-      band: {
-        $cond: { if: { $gt: ["$age", 40] }, then: "Band A", else: "Band B" }
-      }
-    }
-  }
-])
+      salary: 1,
+      grade: { $cond: [{ $gte: ["$salary", 2000] }, "Grade A", "Grade B"] },
+    },
+  },
+]);
 
+db.employees.aggregate([
+  {
+    $project: {
+      name: 1,
+      salary: 1,
+      grade: {
+        $cond: {
+          if: { $gt: ["$salary", 2000] },
+          then: "Grade A",
+          else: "Grade B",
+        },
+      },
+    },
+  },
+]);
+
+db.employees.aggregate([
+    {$project:{name:1,email:1,location:1}},
+    {$unwind:"$location"}
+])
