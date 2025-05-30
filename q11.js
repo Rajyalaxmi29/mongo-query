@@ -3,7 +3,7 @@
 db.employees.aggregate([{$sort:{salary:-1}},{$limit:3}])
 
 //display annual salary of each employee
-db.employees.aggregate([{$project: {name: 1, annualSalary: {$multiply: ["$salary", 12]}}}])
+db.employees.aggregate([{$project: {_id:0,name: 1, annualSalary: {$multiply: ["$salary", 12]}}}])
 //if age>40 then display "band a" else "band b"
 db.employees.aggregate([
   {
